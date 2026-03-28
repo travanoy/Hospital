@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "7wxB3Pz1F8c=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\user\\RiderProjects\\Solution\\Hospital.ConsoleApp\\Hospital.ConsoleApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.14\\microsoft.extensions.dependencyinjection.9.0.14.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.14\\microsoft.extensions.dependencyinjection.abstractions.9.0.14.nupkg.sha512"
+  ],
+  "logs": []
+}
