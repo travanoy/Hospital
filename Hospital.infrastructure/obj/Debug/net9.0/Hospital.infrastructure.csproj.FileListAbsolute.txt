@@ -1,0 +1,16 @@
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\bin\Debug\net9.0\Hospital.infrastructure.deps.json
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\bin\Debug\net9.0\Hospital.infrastructure.dll
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\bin\Debug\net9.0\Hospital.infrastructure.pdb
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\obj\Debug\net9.0\Hospital.infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\obj\Debug\net9.0\Hospital.infrastructure.AssemblyInfoInputs.cache
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\obj\Debug\net9.0\Hospital.infrastructure.AssemblyInfo.cs
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\obj\Debug\net9.0\Hospital.infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\obj\Debug\net9.0\Hospital.infrastructure.sourcelink.json
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\obj\Debug\net9.0\Hospital.infrastructure.dll
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\obj\Debug\net9.0\refint\Hospital.infrastructure.dll
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\obj\Debug\net9.0\Hospital.infrastructure.pdb
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\obj\Debug\net9.0\ref\Hospital.infrastructure.dll
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\bin\Debug\net9.0\Hospital.Domain.dll
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\bin\Debug\net9.0\Hospital.Domain.pdb
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\obj\Debug\net9.0\Hospital.infrastructure.csproj.AssemblyReference.cache
+C:\Users\user\RiderProjects\Solution\Hospital.infrastructure\obj\Debug\net9.0\Hospital.63CAA776.Up2Date

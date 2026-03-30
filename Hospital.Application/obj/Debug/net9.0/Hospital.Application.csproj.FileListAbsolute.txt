@@ -1,0 +1,12 @@
+C:\Users\user\RiderProjects\Solution\Hospital.Application\bin\Debug\net9.0\Hospital.Application.deps.json
+C:\Users\user\RiderProjects\Solution\Hospital.Application\bin\Debug\net9.0\Hospital.Application.dll
+C:\Users\user\RiderProjects\Solution\Hospital.Application\bin\Debug\net9.0\Hospital.Application.pdb
+C:\Users\user\RiderProjects\Solution\Hospital.Application\obj\Debug\net9.0\Hospital.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\RiderProjects\Solution\Hospital.Application\obj\Debug\net9.0\Hospital.Application.AssemblyInfoInputs.cache
+C:\Users\user\RiderProjects\Solution\Hospital.Application\obj\Debug\net9.0\Hospital.Application.AssemblyInfo.cs
+C:\Users\user\RiderProjects\Solution\Hospital.Application\obj\Debug\net9.0\Hospital.Application.csproj.CoreCompileInputs.cache
+C:\Users\user\RiderProjects\Solution\Hospital.Application\obj\Debug\net9.0\Hospital.Application.sourcelink.json
+C:\Users\user\RiderProjects\Solution\Hospital.Application\obj\Debug\net9.0\Hospital.Application.dll
+C:\Users\user\RiderProjects\Solution\Hospital.Application\obj\Debug\net9.0\refint\Hospital.Application.dll
+C:\Users\user\RiderProjects\Solution\Hospital.Application\obj\Debug\net9.0\Hospital.Application.pdb
+C:\Users\user\RiderProjects\Solution\Hospital.Application\obj\Debug\net9.0\ref\Hospital.Application.dll

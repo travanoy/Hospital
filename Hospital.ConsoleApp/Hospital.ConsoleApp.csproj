@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Hospital.Application\Hospital.Application.csproj" />
+      <ProjectReference Include="..\Hospital.infrastructure\Hospital.infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -16,7 +17,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="DI\" />
       <Folder Include="Menus\" />
     </ItemGroup>
 

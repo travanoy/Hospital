@@ -1,6 +1,6 @@
 namespace Hospital.Application.Interfaces;
 
-public class IUserService
+public interface IUserService
 {
     
 }

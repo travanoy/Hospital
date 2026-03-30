@@ -10,4 +10,8 @@
       <Folder Include="Persistence\Migrations\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Hospital.Domain\Hospital.Domain.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -1,6 +1,8 @@
+using Hospital.Application.Interfaces;
+
 namespace Hospital.Application.Services;
 
-public class DoctorService
+public class DoctorService : IDoctorService
 {
     
 }

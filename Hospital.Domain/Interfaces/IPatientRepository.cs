@@ -1,9 +1,12 @@
+using Hospital.Domain.Entities;
+
 namespace Hospital.Domain.Interfaces;
 
-public interface IAppointmentRepository
+public interface IPatientRepository
 {
-    Task<IEnumerable<Appointment>> GetByPatientIdAsync(int patientId);
-    Task<bool> DoctorHasAppointmentAsync(int doctorId, DateTime at);
-    Task AddAsync(Appointment appointment);
-    Task UpdateStatusAsync(int appointmentId, string status);
+    Task<Patient?> GetByIdAsync(int id);
+    Task<IEnumerable<Patient>> GetAllActiveAsync();
+    Task<IEnumerable<Patient>> SearchByDiagnosisAsync(string diagnosis);
+    Task AddAsync(Patient patient);
+    Task UpdateStatusAsync(int patientId, bool isActive);
 }

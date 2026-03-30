@@ -46,6 +46,29 @@
         "runtime": {
           "bin/placeholder/Hospital.Application.dll": {}
         }
+      },
+      "Hospital.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/Hospital.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hospital.Domain.dll": {}
+        }
+      },
+      "Hospital.infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Hospital.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Hospital.infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hospital.infrastructure.dll": {}
+        }
       }
     }
   },
@@ -114,11 +137,22 @@
       "type": "project",
       "path": "../Hospital.Application/Hospital.Application.csproj",
       "msbuildProject": "../Hospital.Application/Hospital.Application.csproj"
+    },
+    "Hospital.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Hospital.Domain/Hospital.Domain.csproj",
+      "msbuildProject": "../Hospital.Domain/Hospital.Domain.csproj"
+    },
+    "Hospital.infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../Hospital.infrastructure/Hospital.infrastructure.csproj",
+      "msbuildProject": "../Hospital.infrastructure/Hospital.infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
       "Hospital.Application >= 1.0.0",
+      "Hospital.infrastructure >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection >= 9.0.14"
     ]
   },
@@ -157,6 +191,9 @@
           "projectReferences": {
             "C:\\Users\\user\\RiderProjects\\Solution\\Hospital.Application\\Hospital.Application.csproj": {
               "projectPath": "C:\\Users\\user\\RiderProjects\\Solution\\Hospital.Application\\Hospital.Application.csproj"
+            },
+            "C:\\Users\\user\\RiderProjects\\Solution\\Hospital.infrastructure\\Hospital.infrastructure.csproj": {
+              "projectPath": "C:\\Users\\user\\RiderProjects\\Solution\\Hospital.infrastructure\\Hospital.infrastructure.csproj"
             }
           }
         }
