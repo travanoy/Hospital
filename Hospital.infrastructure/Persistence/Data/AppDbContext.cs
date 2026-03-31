@@ -5,8 +5,17 @@ namespace Hospital.infrastructure.Persistence.Data;
 
 public class AppDbContext : DbContext
 {
+    private const string ConnectionStringEnvName = "HOSPITAL_DB_CONNECTION";
+    private const string DefaultConnectionString =
+        "Server=(localdb)\\MSSQLLocalDB;Database=HospitalDb;Trusted_Connection=True;TrustServerCertificate=True";
+
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
+    }
+
+    public static string GetConnectionString()
+    {
+        return Environment.GetEnvironmentVariable(ConnectionStringEnvName) ?? DefaultConnectionString;
     }
 
     public DbSet<Apointment> Apointments => Set<Apointment>();
@@ -18,7 +27,7 @@ public class AppDbContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=HospitalDb;Trusted_Connection=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer(GetConnectionString());
         }
     }
 

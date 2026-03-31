@@ -33,4 +33,29 @@ public class DoctorRepository : IDoctorRepository
         _context.Doctors.Add(doctor);
         await _context.SaveChangesAsync();
     }
+
+    public async Task<IEnumerable<Patient>> GetPatientsByDoctorIdAsync(int doctorId)
+    {
+        if (doctorId <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(doctorId), "DoctorId must be greater than 0.");
+        }
+
+        return await _context.Apointments
+            .AsNoTracking()
+            .Where(ap => ap.DoctorId == doctorId)
+            .Join(
+                _context.Patients.AsNoTracking(),
+                ap => ap.PatientId,
+                p => p.Id,
+                (ap, p) => p)
+            .Distinct()
+            .ToListAsync();
+    }
+
+    public async Task<IEnumerable<Patient>> GetActivePatientsByDoctorIdAsync(int doctorId)
+    {
+        var patients = await GetPatientsByDoctorIdAsync(doctorId);
+        return patients.Where(p => p.IsActive).ToArray();
+    }
 }
