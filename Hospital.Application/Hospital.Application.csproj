@@ -11,4 +11,8 @@
       <Folder Include="Mappings\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Hospital.Domain\Hospital.Domain.csproj" />
+    </ItemGroup>
+
 </Project>

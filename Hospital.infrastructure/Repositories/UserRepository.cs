@@ -1,17 +1,29 @@
 using Hospital.Domain.Entities;
 using Hospital.Domain.Interfaces;
+using Hospital.infrastructure.Persistence.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hospital.infrastructure.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    public Task<User?> GetByUsernameAsync(string username)
+    private readonly AppDbContext _context;
+
+    public UserRepository(AppDbContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
     }
 
-    public Task AddAsync(User user)
+    public async Task<User?> GetByUsernameAsync(string username)
     {
-        throw new NotImplementedException();
+        return await _context.Users
+            .AsNoTracking()
+            .FirstOrDefaultAsync(u => u.Username == username);
+    }
+
+    public async Task AddAsync(User user)
+    {
+        _context.Users.Add(user);
+        await _context.SaveChangesAsync();
     }
 }

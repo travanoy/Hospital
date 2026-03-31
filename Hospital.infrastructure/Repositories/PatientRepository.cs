@@ -1,32 +1,61 @@
 using Hospital.Domain.Entities;
 using Hospital.Domain.Interfaces;
+using Hospital.infrastructure.Persistence.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hospital.infrastructure.Repositories;
 
 public class PatientRepository : IPatientRepository
 {
-    public Task<Patient?> GetByIdAsync(int id)
+    private static readonly SemaphoreSlim UpdateStatusLock = new(1, 1);
+    private readonly AppDbContext _context;
+
+    public PatientRepository(AppDbContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
     }
 
-    public Task<IEnumerable<Patient>> GetAllActiveAsync()
+    public async Task<Patient?> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Patients
+            .AsNoTracking()
+            .FirstOrDefaultAsync(p => p.Id == id);
     }
 
-    public Task<IEnumerable<Patient>> SearchByDiagnosisAsync(string diagnosis)
+    public async Task<IEnumerable<Patient>> GetAllActiveAsync()
     {
-        throw new NotImplementedException();
+        return await _context.Patients
+            .AsNoTracking()
+            .Where(p => p.IsActive)
+            .ToListAsync();
     }
 
-    public Task AddAsync(Patient patient)
+    public async Task<IEnumerable<Patient>> SearchByDiagnosisAsync(string diagnosis)
     {
-        throw new NotImplementedException();
+        return await _context.Patients
+            .AsNoTracking()
+            .Where(p => p.Diagnosis.Contains(diagnosis))
+            .ToListAsync();
     }
 
-    public Task UpdateStatusAsync(int patientId, bool isActive)
+    public async Task AddAsync(Patient patient)
     {
-        throw new NotImplementedException();
+        _context.Patients.Add(patient);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task UpdateStatusAsync(int patientId, bool isActive)
+    {
+        await UpdateStatusLock.WaitAsync();
+        try
+        {
+            await _context.Patients
+                .Where(p => p.Id == patientId)
+                .ExecuteUpdateAsync(s => s.SetProperty(p => p.IsActive, isActive));
+        }
+        finally
+        {
+            UpdateStatusLock.Release();
+        }
     }
 }

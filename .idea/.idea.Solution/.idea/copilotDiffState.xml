@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/Hospital.Application/Interfaces/IUserService.cs">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/Hospital.Application/Interfaces/IUserService.cs" />
+              <option name="originalContent" value="namespace Hospital.Application.Interfaces;&#10;&#10;public interface IUserService&#10;{&#10;    &#10;}" />
+              <option name="updatedContent" value="using Hospital.Domain.Entities;&#10;&#10;namespace Hospital.Application.Interfaces;&#10;&#10;public interface IUserService&#10;{&#10;    Task&lt;User?&gt; GetByUsernameAsync(string username);&#10;    Task AddAsync(User user);&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Hospital.Application/Services/UserService.cs">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/Hospital.Application/Services/UserService.cs" />
+              <option name="originalContent" value="using Hospital.Application.Interfaces;&#10;&#10;namespace Hospital.Application.Services;&#10;&#10;public class UserService : IUserService&#10;{&#10;    &#10;}" />
+              <option name="updatedContent" value="using Hospital.Application.Interfaces;&#10;using Hospital.Domain.Entities;&#10;using Hospital.Domain.Interfaces;&#10;&#10;namespace Hospital.Application.Services;&#10;&#10;public class UserService : IUserService&#10;{&#10;    private readonly IUserRepository _userRepository;&#10;&#10;    public UserService(IUserRepository userRepository)&#10;    {&#10;        _userRepository = userRepository;&#10;    }&#10;&#10;    public Task&lt;User?&gt; GetByUsernameAsync(string username)&#10;    {&#10;        return _userRepository.GetByUsernameAsync(username);&#10;    }&#10;&#10;    public Task AddAsync(User user)&#10;    {&#10;        return _userRepository.AddAsync(user);&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
