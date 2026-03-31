@@ -7,6 +7,12 @@ namespace Hospital.Application.Services;
 
 public class AuthService : IAuthService
 {
+    private static readonly HashSet<string> AllowedRoles = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "Admin",
+        "Doctor"
+    };
+
     private readonly IUserService _userService;
 
     public AuthService(IUserService userService)
@@ -16,7 +22,13 @@ public class AuthService : IAuthService
 
     public async Task<User?> LoginAsync(string username, string password)
     {
-        var user = await _userService.GetByUsernameAsync(username);
+        if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+        {
+            return null;
+        }
+
+        var normalizedUsername = username.Trim();
+        var user = await _userService.GetByUsernameAsync(normalizedUsername);
         if (user is null)
         {
             return null;
@@ -36,9 +48,31 @@ public class AuthService : IAuthService
         {
             throw new ArgumentException("Username is required.", nameof(username));
         }
-        
 
-        var existingUser = await _userService.GetByUsernameAsync(username);
+        if (string.IsNullOrWhiteSpace(password))
+        {
+            throw new ArgumentException("Password is required.", nameof(password));
+        }
+
+        if (password.Length < 6)
+        {
+            throw new ArgumentException("Password must be at least 6 characters.", nameof(password));
+        }
+
+        if (string.IsNullOrWhiteSpace(role))
+        {
+            throw new ArgumentException("Role is required.", nameof(role));
+        }
+
+        var normalizedUsername = username.Trim();
+        var normalizedRole = role.Trim();
+
+        if (!AllowedRoles.Contains(normalizedRole))
+        {
+            throw new ArgumentException("Role must be Admin or Doctor.", nameof(role));
+        }
+
+        var existingUser = await _userService.GetByUsernameAsync(normalizedUsername);
         if (existingUser is not null)
         {
             throw new InvalidOperationException("User with this username already exists.");
@@ -46,9 +80,9 @@ public class AuthService : IAuthService
 
         var user = new User
         {
-            Username = username,
+            Username = normalizedUsername,
             Password = HashPassword(password),
-            Role = role
+            Role = normalizedRole
         };
 
         await _userService.AddAsync(user);

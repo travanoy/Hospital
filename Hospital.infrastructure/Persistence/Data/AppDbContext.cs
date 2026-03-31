@@ -5,6 +5,10 @@ namespace Hospital.infrastructure.Persistence.Data;
 
 public class AppDbContext : DbContext
 {
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    {
+    }
+
     public DbSet<Apointment> Apointments => Set<Apointment>();
     public DbSet<Doctor> Doctors => Set<Doctor>();
     public DbSet<Patient> Patients => Set<Patient>();
@@ -12,7 +16,10 @@ public class AppDbContext : DbContext
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server=localhost;Database=HospitalDb;Trusted_Connection=True");
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer("Server=localhost;Database=HospitalDb;Trusted_Connection=True;TrustServerCertificate=True");
+        }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -8,6 +8,7 @@ namespace Hospital.infrastructure.Repositories;
 public class ApointmentRepository : IApointmentRepository
 {
     private readonly AppDbContext _context;
+    private static readonly SemaphoreSlim UpdateStatusLock = new(1, 1);
 
     public ApointmentRepository(AppDbContext context)
     {
@@ -21,7 +22,6 @@ public class ApointmentRepository : IApointmentRepository
             .Where(a => a.PatientId == patientId)
             .ToListAsync();
     }
-    
 
     public async Task<bool> DoctorHasAppointmentAsync(int doctorId, DateTime at)
     {
@@ -38,8 +38,16 @@ public class ApointmentRepository : IApointmentRepository
 
     public async Task UpdateStatusAsync(int apointmentId, string status)
     {
-        await _context.Apointments
-            .Where(a => a.Id == apointmentId)
-            .ExecuteUpdateAsync(s => s.SetProperty(a => a.Status, status));
+        await UpdateStatusLock.WaitAsync();
+        try
+        {
+            await _context.Apointments
+                .Where(a => a.Id == apointmentId)
+                .ExecuteUpdateAsync(s => s.SetProperty(a => a.Status, status));
+        }
+        finally {
+            UpdateStatusLock.Release();
+        }
+        
     }
 }

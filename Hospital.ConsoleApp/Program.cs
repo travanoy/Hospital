@@ -1,19 +1,18 @@
-using Hospital.Application.Interfaces;
 using Hospital.ConsoleApp.DI;
+using Hospital.ConsoleApp.Menus;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Hospital.ConsoleApp;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var services = new ServiceCollection();
         services.AddHospitalDependencies();
 
         using var serviceProvider = services.BuildServiceProvider();
-
-        var patientService = serviceProvider.GetRequiredService<IPatientService>();
-        Console.WriteLine($"DI configured: {patientService.GetType().Name}");
+        var menu = serviceProvider.GetRequiredService<MainMenuHandler>();
+        await menu.RunAsync();
     }
 }

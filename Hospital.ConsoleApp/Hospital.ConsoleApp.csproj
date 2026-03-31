@@ -16,8 +16,4 @@
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.14" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Menus\" />
-    </ItemGroup>
-
 </Project>
