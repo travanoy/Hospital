@@ -72,7 +72,11 @@ public class PatientService : IPatientService
         }
 
         using var semaphore = new SemaphoreSlim(MaxConcurrentTasks, MaxConcurrentTasks);
-        var tasks = ids.Select(id => ProcessPatientAsync(id, semaphore));
+        var tasks = new List<Task>(ids.Length);
+        foreach (var id in ids)
+        {
+            tasks.Add(ProcessPatientAsync(id, semaphore));
+        }
 
         await Task.WhenAll(tasks);
     }

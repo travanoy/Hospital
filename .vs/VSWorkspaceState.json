@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Hospital.Domain",
+    "\\Hospital.infrastructure",
+    "\\Hospital.infrastructure\\obj",
+    "\\Hospital.infrastructure\\obj\\Release",
+    "\\Hospital.infrastructure\\Persistence",
+    "\\Hospital.infrastructure\\Persistence\\Data"
+  ],
+  "SelectedNode": "\\Hospital.infrastructure\\Persistence\\Data\\AppDbContext.cs",
+  "PreviewInSolutionExplorer": false
+}

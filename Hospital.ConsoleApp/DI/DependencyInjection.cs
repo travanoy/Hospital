@@ -15,7 +15,7 @@ public static class DependencyInjection
     public static IServiceCollection AddHospitalDependencies(this IServiceCollection services)
     {
         services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer("Server=localhost;Database=HospitalDb;Trusted_Connection=True;TrustServerCertificate=True"));
+            options.UseSqlServer(AppDbContext.GetConnectionString()));
 
         services.AddScoped<IApointmentService, ApointmentService>();
         services.AddScoped<IDoctorService, DoctorService>();

@@ -62,9 +62,9 @@ public class MenuActionsHandler : IMenuActions
     {
         Console.Write("Username: ");
         var username = (Console.ReadLine() ?? string.Empty).Trim();
-        Console.Write("Password: ");
+        Console.Write("Password (min 6 chars): ");
         var password = Console.ReadLine() ?? string.Empty;
-        Console.Write("Role: ");
+        Console.Write("Role (Admin/Doctor, default Doctor): ");
         var roleInput = Console.ReadLine();
         var role = string.IsNullOrWhiteSpace(roleInput) ? "Doctor" : roleInput.Trim();
 
@@ -115,7 +115,7 @@ public class MenuActionsHandler : IMenuActions
         }
         else if (IsDoctor)
         {
-            // Assumption: User.Id corresponds to Doctor.Id.
+            
             patients = await _doctorService.GetMyActivePatientsAsync(CurrentUserId!.Value);
         }
         else
@@ -124,7 +124,14 @@ public class MenuActionsHandler : IMenuActions
             return;
         }
 
-        foreach (var patient in patients)
+        var patientList = patients.ToList();
+        if (patientList.Count == 0)
+        {
+            Console.WriteLine("No active patients found.");
+            return;
+        }
+
+        foreach (var patient in patientList)
         {
             Console.WriteLine($"[{patient.Id}] {patient.FullName}, diagnosis={patient.Diagnosis}, active={patient.IsActive}");
         }

@@ -10,3 +10,5 @@ C:\Users\user\RiderProjects\Solution\Hospital.Domain\obj\Debug\net9.0\Hospital.D
 C:\Users\user\RiderProjects\Solution\Hospital.Domain\obj\Debug\net9.0\refint\Hospital.Domain.dll
 C:\Users\user\RiderProjects\Solution\Hospital.Domain\obj\Debug\net9.0\Hospital.Domain.pdb
 C:\Users\user\RiderProjects\Solution\Hospital.Domain\obj\Debug\net9.0\ref\Hospital.Domain.dll
+C:\Users\user\RiderProjects\Solution\Hospital.Domain\bin\Debug\net9.0\Hospital.Domain.runtimeconfig.json
+C:\Users\user\RiderProjects\Solution\Hospital.Domain\obj\Debug\net9.0\Hospital.Domain.genruntimeconfig.cache
